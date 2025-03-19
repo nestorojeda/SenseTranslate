@@ -7,10 +7,12 @@ name = "pypi"
 langchain = "*"
 langchain-huggingface = "*"
 transformers = "*"
-ipywidgets = "*"
+protobuf = "*"
+sentencepiece = "*"
 
 [dev-packages]
+ipywidgets = "*"
 ipykernel = "*"
 
 [requires]
-python_version = "3.13"
+python_version = "3.9"
