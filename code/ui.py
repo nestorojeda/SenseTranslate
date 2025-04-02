@@ -2,19 +2,40 @@ import streamlit as st
 from transformers import pipeline
 from PIL import Image
 
-pipeline = pipeline(task="image-classification", model="julien-c/hotdog-not-hotdog")
+summarizer = pipeline("summarization", model="csebuetnlp/mT5_multilingual_XLSum")
+sentiment_classifier = pipeline("text-classification", model="lxyuan/distilbert-base-multilingual-cased-sentiments-student")
+translator = pipeline("translation", model="Helsinki-NLP/opus-mt-es-en") 
 
 st.title("SenseTranslate")
 
 file_name = st.file_uploader("Upload a txt file", type=["txt"])
 
 if file_name is not None:
-    col1, col2 = st.columns(2)
+    text = file_name.getvalue().decode('utf-8')
+    st.subheader("Original Text")
+    st.write(text)
 
-    image = Image.open(file_name)
-    col1.image(image, use_column_width=True)
-    predictions = pipeline(image)
+    st.subheader("Translated Text")
+    with st.spinner("Translating..."):
+        # Ensure the text is not empty
+        if text.strip():
+            # Perform translation
+            translated_text = translator(text, max_length=512)
+            # Display the translated text
+            st.write(translated_text[0]['translation_text'])
 
-    col2.header("Probabilities")
-    for p in predictions:
-        col2.subheader(f"{ p['label'] }: { round(p['score'] * 100, 1)}%")
+    st.subheader("Sentiment Analysis")
+    with st.spinner("Analyzing sentiment..."):
+        # Ensure the text is not empty
+        if text.strip():
+            # Perform sentiment analysis
+            sentiment = sentiment_classifier(text)
+            st.write(sentiment[0]['label'])
+
+    st.subheader("Summarization")
+    with st.spinner("Summarizing..."):
+        # Ensure the text is not empty
+        if text.strip():
+            # Perform summarization
+            summary = summarizer(text, max_length=130, min_length=30, do_sample=False)
+            st.write(summary[0]['summary_text'])
