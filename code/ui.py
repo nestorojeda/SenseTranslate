@@ -1,6 +1,8 @@
 import streamlit as st
 from transformers import pipeline
 from PIL import Image
+import threading
+from functools import partial
 
 # Constants
 EMOJI_POSITIVE = "😃"
@@ -25,9 +27,39 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-summarizer = pipeline("summarization", model="csebuetnlp/mT5_multilingual_XLSum")
-sentiment_classifier = pipeline("text-classification", model="lxyuan/distilbert-base-multilingual-cased-sentiments-student")
-translator = pipeline("translation", model="Helsinki-NLP/opus-mt-es-en") 
+# Create a function to load a pipeline with spinner
+def load_pipeline_with_spinner(pipeline_type, model_name):
+    with st.spinner(f"Loading {pipeline_type} model..."):
+        return pipeline(pipeline_type, model=model_name)
+
+# Initialize placeholders
+summarizer = None
+sentiment_classifier = None
+translator = None
+
+# Create and start threads for loading models
+thread1 = threading.Thread(
+    target=partial(lambda: globals().__setitem__('summarizer', 
+                                                load_pipeline_with_spinner("summarization", "csebuetnlp/mT5_multilingual_XLSum")))
+)
+thread2 = threading.Thread(
+    target=partial(lambda: globals().__setitem__('sentiment_classifier', 
+                                               load_pipeline_with_spinner("text-classification", "lxyuan/distilbert-base-multilingual-cased-sentiments-student")))
+)
+thread3 = threading.Thread(
+    target=partial(lambda: globals().__setitem__('translator', 
+                                               load_pipeline_with_spinner("translation", "Helsinki-NLP/opus-mt-es-en")))
+)
+
+# Start all threads
+thread1.start()
+thread2.start()
+thread3.start()
+
+# Wait for all threads to complete
+thread1.join()
+thread2.join()
+thread3.join()
 
 st.title("SenseTranslate")
 
