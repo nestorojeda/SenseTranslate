@@ -4,9 +4,9 @@ SenseTranslate is a powerful translation tool that leverages advanced AI to prov
 ## Project Overview
 
 This project includes tools to process text documents through multiple AI pipelines:
-- Text summarization using mT5_multilingual_XLSum
-- Sentiment analysis using distilbert-base-multilingual-cased
-- Translation from Spanish to English using opus-mt-es-en
+- Text summarization using [mT5_multilingual_XLSum](https://huggingface.co/csebuetnlp/mT5_multilingual_XLSum)
+- Sentiment analysis using [distilbert-base-multilingual-cased](https://huggingface.co/distilbert-base-multilingual-cased)
+- Translation from Spanish to English using [opus-mt-es-en](https://huggingface.co/Helsinki-NLP/opus-mt-es-en)
 
 ## Directory Structure
 
