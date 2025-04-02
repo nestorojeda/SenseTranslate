@@ -1,5 +1,5 @@
 # SenseTranslate
-SenseTranslate is a powerful translation tool that leverages advanced AI to provide summarization, sentiment analysis, and translation from Spanish to English.
+SenseTranslate is a powerful translation tool that leverages advanced AI to provide summarization, sentiment analysis, and translation from Spanish to English. This was done as part of the Msc. in Artificial Intelligence at the Alfonso X University.
 
 ## Project Overview
 
