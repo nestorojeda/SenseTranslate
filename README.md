@@ -24,3 +24,5 @@ Luego, abre tu navegador web y navega a `http://localhost:8501` para acceder a l
     - Un resumen del texto
     - Resultados del análisis de sentimientos
     - Texto traducido al inglés
+
+La versión completa la he subido a mi repositorio de GitHub, donde puedes encontrar el código fuente y la documentación adicional. Puedes acceder al repositorio en el siguiente [enlace](https://github.com/nestorojeda/SenseTranslate)
