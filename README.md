@@ -1,45 +1,26 @@
-# SenseTranslate
-SenseTranslate is a powerful translation tool that leverages advanced AI to provide summarization, sentiment analysis, and translation from Spanish to English. This was done as part of the Msc. in Artificial Intelligence at the Alfonso X University.
+# Ejercicio de Feedback 1 - Áreas de aplicación y casos de uso: entornos con datos no estructurados
 
-## Project Overview
+Autor: Néstor Ojeda González
 
-This project includes tools to process text documents through multiple AI pipelines:
-- Text summarization using [mT5_multilingual_XLSum](https://huggingface.co/csebuetnlp/mT5_multilingual_XLSum)
-- Sentiment analysis using [distilbert-base-multilingual-cased](https://huggingface.co/distilbert-base-multilingual-cased)
-- Translation from Spanish to English using [opus-mt-es-en](https://huggingface.co/Helsinki-NLP/opus-mt-es-en)
+Este es el entregable del primer ejercicio de feedback. Consta de las siguientes partes:
 
-## Directory Structure
+- code : contiene el código de la aplicación de una pequeña interfaz de usuario que implementa el ejercicio.
+- docs : contiene unos textos de ejemplo para probar la aplicación.
+- notebook: contiene un Jupyter Notebook que implementa tambien el ejercicio.
 
-- `code/`: Contains implementation code
-    - `ui.py`: Streamlit user interface for the application
-- `data/`: Contains test data
-    - `short_phrases.csv`: Collection of short Spanish phrases
-    - `long_phrases.csv`: Collection of longer Spanish text samples
-- `docs/`: Contains sample text documents on various scientific topics
-    - Multiple `.txt` files with Spanish content about physics, mathematics, etc.
-- `notebooks/`: Contains Jupyter notebooks for prototyping
-    - `1_summarize.ipynb`: Text summarization implementation
-    - `2_sentiment.ipynb`: Sentiment analysis implementation
-    - `3_translate.ipynb`: Translation implementation
-    - `4_final.ipynb`: Combined implementation of all services
+## Instrucciones para ejecutar la interfaz de usuario
 
-## Getting Started
-
-To run this project, install the dependencies:
+Para ejecutar este proyecto, instala las dependencias:
 
 ```bash
 pip install -r requirements.txt
 streamlit run ./code/ui.py
 ```
-Then, open your web browser and navigate to `http://localhost:8501` to access the application.
+Luego, abre tu navegador web y navega a `http://localhost:8501` para acceder a la aplicación.
 
-## Usage
-1. Upload a text document in Spanish.
-2. The application will process the document and provide:
-   - A summary of the text
-   - Sentiment analysis results
-   - Translated text in English
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Uso
+1. Sube un documento de texto en español.
+2. La aplicación procesará el documento y proporcionará:
+    - Un resumen del texto
+    - Resultados del análisis de sentimientos
+    - Texto traducido al inglés
